@@ -1,0 +1,178 @@
+﻿@model IEnumerable<AppRubrossss.Models.Articulo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+   <ul class="ul">
+
+        <li>
+            <a class="a" asp-area="" asp-controller="Rubros" asp-action="Index"> Rubros </a>
+        </li>
+    </ul>
+
+<h1>Articulos</h1>
+
+    <ul class="ul2">
+
+        <li>
+            <a  class="a" asp-area="" asp-controller="SubRubros" asp-action="index"> Subrubros </a>
+        </li>
+    </ul>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<div>
+    <button onclick="history.back()" id="button"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+  <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z"/>
+</svg> Volver </button>
+
+</div>
+<div>
+
+    <button onclick="AbrirModal()" id="button"> <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-node-plus-fill" viewBox="0 0 16 16">
+  <path d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0z"/>
+</svg> Articulo </button>
+</div>
+ <br/>
+
+<table class="table table-hover">
+    <thead style="background-color:#ffb627">
+        <tr>
+            <th>
+                 <span id="span"> Articulo </span>
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.UltAct)*@
+                 <span id="span"> Precio Costo </span>
+                 @*<span id="span"> Ult. Act. </span>*@
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.PrecioCosto)*@
+                 <span id="span"> % Ganancia </span>
+                
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.PorcentajeGanancia)*@
+                 <span id="span"> Precio Venta </span>
+
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.PrecioVenta)*@
+                 <span id="span"> Rubro </span>
+
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.SubRubro)*@
+                 <span id="span"> Subrubro </span>
+
+            </th>
+            <th>
+                <span id="span"> Opciones  </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tbody-Articulos">
+
+}
+    </tbody>
+</table>
+
+<div class="modal" tabindex="-1" id="exampleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="Titulo-Modal-Articulo"></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <input type="hidden" id="ArticuloID" value="0"/>
+            <div class="form-group">
+                <label for="recipient-name" class="control-label">Descripcion</label>
+                <input type="text" class="form-control" autocomplete="off" required id="ArticuloNombre"/>
+                <p class="p-error"  id="Error-Articulo"></p>
+                
+
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                <label class="col-form-label"> Rubro: </label>
+                </div>
+               
+                <div class="col-auto">
+
+                @Html.DropDownList("RubroID", null, htmlAttributes: new {@class = "form-control"})
+                </div>
+
+                 <div class="col-auto">
+                <label class="col-form-label"> Subrubro: </label>
+                </div>
+                <div class="col-auto">
+
+                @Html.DropDownList("SubrubroID", null, htmlAttributes: new {@class = "form-control"})
+
+                </div>
+            </div>
+         @*     <div class="form-group">
+                <label class="control-label"> Subrubro: </label>
+                @Html.DropDownList("SubrubroID", null, htmlAttributes: new {@class = "form-control"})
+            </div>*@
+
+
+
+     @*       <div class="form-group">
+
+                <label for="recipient-name" class="control-label">Precio Costo</label>
+                <input type="text" class="form-control" autocomplete="off" required id="PrecioCosto"/>
+                <p id="Error-PrecioCosto"></p>
+            </div>
+            <div class="form-group">
+
+                 <label for="recipient-name" class="control-label">% Ganancia</label>
+                <input type="text" class="form-control" autocomplete="off" required id="Ganancia"/>
+                <p id="Error-Ganancia"></p>
+            </div>
+            <div class="form-group">
+
+                   <label for="recipient-name" class="control-label"> Precio Venta</label>
+                <input type="text" class="form-control" autocomplete="off" required id="PrecioVenta"/>
+                <p id="Error-PrecioVenta"></p>
+            </div>*@
+
+            <div class="form-group">
+                <label class="control-label">Precio Costo:</label>
+                   <input type="tel" class="form-control" value="0" style="text-transform:uppercase" autocomplete="off" required onKeyUp="CalcularImportes(1)" onKeyDown="CalcularImportes(1)" id="PrecioCosto">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Precio Venta:</label>
+                <input type="tel" class="form-control" value="0" style="text-transform:uppercase" autocomplete="off" required onKeyUp="CalcularImportes(3)" onKeyDown="CalcularImportes(3)" id="PrecioVenta">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Porc. Ganan.:</label>
+                <input type="tel" class="form-control" value="0" style="text-transform:uppercase" autocomplete="off" required onKeyUp="CalcularImportes(2)" onKeyDown="CalcularImportes(2)" id="Ganancia">
+                <p id="Error-Ganancia"></p>
+
+            </div>
+
+            </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" style="border-radius: 20.3px!important;" onclick="VaciarFormulario()" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" style="border-radius: 20.3px!important;" onclick="GuardarArticulo()" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg> Guardar </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts {
+<script src="~/js/Articulos.js"></script>
+<script>
+window.onload = CompletarTablaArticulo();
+</script>
+}
