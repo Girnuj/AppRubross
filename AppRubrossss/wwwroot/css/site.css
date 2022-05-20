@@ -39,7 +39,8 @@ body {
     background-size: 4%;
     min-height: 100vh;
     height: 100vh;
-  /*  height: auto;
+    /*box-shadow: 3px 3px 20px #efc958;*/
+    /*  height: auto;
     width: 100%;*/
 }
 
@@ -68,6 +69,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     /*text-fill-color: transparent;*/
     color: transparent;
+    /*box-shadow: 3px 3px 20px #efc958;*/
 }
 
 [type="checkbox"]:checked,
@@ -350,7 +352,7 @@ h1 {
 /*
 //butoon*/
 
-/* From uiverse.io by @meermubashar */
+
 #button {
     width: 140px;
     height: 45px;
@@ -511,4 +513,75 @@ td {
 .p-error {
     color: red!important;
     font-size: 17px!important;
+}
+
+#Modall {
+    box-shadow: 3px 3px 20px #efc958;
+    border-radius: 40px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    background-color: #f9eabe;
+    top:80px;
+}
+
+#Modall1 {
+    box-shadow: 3px 3px 20px #efc958;
+    border-radius: 40px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    background-color: #f9eabe;
+    top:150px!important;
+}
+
+#Modall2 {
+    box-shadow: 3px 3px 20px #efc958;
+    border-radius: 40px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    background-color: #f9eabe;
+    top: 140px !important;
+}
+
+.modal-title {
+    position: relative;
+    left: 25%;
+    top: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    /* line-height: 1; */
+    color: #212529;
+    text-align: center;
+    -webkit-text-stroke: 2px #198754;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-header{
+    border: none!important;
+}
+
+.modal-body{
+    border:none!important;
+}
+
+.modal-footer {
+    border: none !important;
+    position: relative;
+    top: -5px;
+    left: -11px;
+    padding-top: 0;
+}
+
+/*.modal1 {
+    top:150px!important;
+}*/
+
+#buttonGuardar {
+    box-shadow: 3px 3px 20px #037801;
+    border-radius: 20.3px !important
+}
+
+#buttonCerrar {
+    border-radius: 20.3px !important;
+    box-shadow: 3px 3px 20px #ab0800;
 }

@@ -68,7 +68,7 @@
 
 <div class="modal" tabindex="-1" id="exampleModal">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" id="Modall1">
       <div class="modal-header">
         <h4 class="modal-title" id="Titulo-Modal-Rubro"></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="VaciarFormulario()" aria-label="Close"></button>
@@ -77,15 +77,15 @@
         <form>
             <input type="hidden" id="RubroID" value="0"/>
             <div class="form-group">
-                <label for="recipient-name" class="control-label">Descripcion</label>
-                <input type="text" class="form-control" autocomplete="off" required id="RubroNombre"/>
+                @*<label for="recipient-name" class="control-label">Descripcion</label>*@
+                <input type="text" class="form-control" placeholder="Nombre del Rubro" autocomplete="off" required id="RubroNombre"/>
                 <p id="Error-RubroNombre" class="p-error"></p>
             </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" style="border-radius: 20.3px!important;" onclick="VaciarFormulario()" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" onclick="GuardarRubro()" style="border-radius: 20.3px!important;" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+        <button type="button" class="btn btn-danger" id="buttonCerrar" onclick="VaciarFormulario()" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" onclick="GuardarRubro()" id="buttonGuardar" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
 </svg> Guardar</button>
