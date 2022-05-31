@@ -104,20 +104,15 @@ const BuscarRubro = async (rubroID) => {
 
     $("#Titulo-Modal-Rubro").text("Editar Rubro")
     $("#RubroID").val(rubroID);
+    let data = { RubroID: rubroID }
+    let url = '../../Rubros/BuscarRubro'
 
     try {
 
-        $.ajax({
-            type: "POST",
-            url: '../../Rubros/BuscarRubro',
-            data: { RubroID: rubroID },
-            success: await function (rubro) {
-                $("#RubroNombre").val(rubro.descripcion);
-                $("#exampleModal").modal("show");
-            },
-            error: (data) => console.log(data)
-
-        });
+        $.post(url, data).done(await function (rubro) {
+            $("#RubroNombre").val(rubro.descripcion);
+            $("#exampleModal").modal("show");
+        }).fail(console.log("error buscarrubro")).always(() => {})        
 
     } catch (err) {
         console.log("error en BuscarRubro",err)
@@ -134,14 +129,21 @@ const VaciarFormulario = () => {
 
 const EliminarRubro = async (rubroID, elimina) => {
 
-    $.ajax({
-        type: "POST",
-        url: '../../Rubros/EliminarRubro',
-        data: { RubroID: rubroID, Elimina: elimina},
-        success: await function (rubro) {
-            CompletarTablaRubros();
-        },
-        error: (data) => console.log(data)
+    let url = '../../Rubros/EliminarRubro'
+    let data = { RubroID: rubroID, Elimina: elimina }
 
-    });
+    $.post(url, data).done(await function (rubro) {
+        CompletarTablaRubros();
+    }).fail(console.log(err)).always(() => {})
+
+    //$.ajax({
+    //    type: "POST",
+    //    url: '../../Rubros/EliminarRubro',
+    //    data: { RubroID: rubroID, Elimina: elimina},
+    //    success: await function (rubro) {
+    //        CompletarTablaRubros();
+    //    },
+    //    error: (data) => console.log(data)
+
+    //});
 }
